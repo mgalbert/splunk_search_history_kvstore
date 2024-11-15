@@ -43,8 +43,8 @@ for entry in data:
         user_data.setdefault(user, []).append({
             "history": entry.get("history"),
             "timestamp": entry.get("timestamp"),
-            "user": user,
-            "key": entry.get("_key")
+            "_user": user,
+            "_key": entry.get("_key")
         })
 
 # Write each user's data to a file
