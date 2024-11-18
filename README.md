@@ -2,13 +2,13 @@
 A loving place to store the trials and tribulations for backing up, searching and restoring Splunk User Search History that's configured to be stored within the KV Store.
 
 
-# Backup Kvstore - pick your flavor of backing up (rest api, splunk cli, splunk app like "KV Store Tools Redux")
+# Backup KV Store - pick your flavor of backing up (rest api, splunk cli, splunk app like "KV Store Tools Redux")
 ## To backup just Search History
 ```
 /opt/splunk/bin/splunk backup kvstore -archiveName `hostname`-SearchHistory_`date +%s`.tar.gz -appName system -collectionName SearchHistory
 ```
 
-## To backup entire Kvstore (most likely a good idea)
+## To backup entire KV Store (most likely a good idea)
 ```
 /opt/splunk/bin/splunk backup kvstore -archiveName `hostname`-SearchHistory_`date +%s`.tar.gz
 ```
@@ -60,14 +60,14 @@ curl -k -u admin https://localhost:8089/servicesNS/<user>/system/storage/collect
 ```
 
 
-## Validate that the SearchHistory Kvstore was restored properly for the user through calling the REST API and/or also logging into Splunk as the user to test with, navigate to "Search & Reporting" and selecting "Search History"
+## Validate that the SearchHistory KV Store was restored properly for the user through calling the REST API and/or also logging into Splunk as the user to test with, navigate to "Search & Reporting" and selecting "Search History"
 ```
 curl -k -u admin https://localhost:8089/servicesNS/<user>/system/storage/collections/data/SearchHistory
 ```
 
 
 
-## NOTE: There are default limits in kvstore that you need to account for if you're files are large!   If you run into problems, review your splunkd.log and/or the KV Store dashboards within the MC (Search --> KV Store)
+## NOTE: There are default limits in KV Store that you need to account for if you're files are large!   If you run into problems, review your splunkd.log and/or the KV Store dashboards within the MC (Search --> KV Store)
 ```
 # /opt/splunk/bin/splunk btool limits list --debug kvstore
 /opt/splunk/etc/system/default/limits.conf           [kvstore]
